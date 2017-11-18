@@ -3,7 +3,7 @@ app = Flask(__name__)
 
 from sqlalchemy import create_engine, asc
 from sqlalchemy.orm import sessionmaker
-from database_setup import Base, Universe, MenuItem
+from database_setup import Base, Universe, uniChar
 
 
 #Connect to Database and create database session
@@ -14,16 +14,16 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 
-#JSON APIs to view Restaurant Information
+#JSON APIs to view universe Information
 @app.route('/universe/<int:universe_id>/char/JSON')
-def restaurantMenuJSON(universe_id):
+def universeMenuJSON(universe_id):
     universe = session.query(Universe).filter_by(id = universe_id).one()
-    items = session.query(MenuItem).filter_by(universe_id = universe_id).all()
-    return jsonify(UniChars=[i.serialize for i in items])
+    chars = session.query(uniChar).filter_by(universe_id = universe_id).all()
+    return jsonify(UniChars=[i.serialize for i in chars])
 
 
 @app.route('/universe/<int:universe_id>/char/<int:char_id>/JSON')
-def menuItemJSON(universe_id, char_id):
+def uniCharJSON(universe_id, char_id):
     Menu_Item = session.query((UniChar).filter_by(id = char_id).one()
     return jsonify(Uni_Char = (Uni_Char.serialize)
 
@@ -33,14 +33,14 @@ def universesJSON():
     return jsonify(universes= [r.serialize for r in universes])
 
 
-#Show all restaurants
+#Show all universes
 @app.route('/')
 @app.route('/universe/')
 def showUniverses():
   universes = session.query(Universe).order_by(asc(Universe.name))
   return render_template('universes.html', universes = universes)
 
-#Create a new restaurant
+#Create a new universe
 @app.route('/universe/new/', methods=['GET','POST'])
 def newUniverse():
   if request.method == 'POST':
@@ -52,7 +52,7 @@ def newUniverse():
   else:
       return render_template('newUniverse.html')
 
-#Edit a restaurant
+#Edit a universe
 @app.route('/universe/<int:universe_id>/edit/', methods = ['GET', 'POST'])
 def editUniverse(universe_id):
   editedUniverse = session.query(Universe).filter_by(id = universe_id).one()
@@ -65,7 +65,7 @@ def editUniverse(universe_id):
     return render_template('editUniverse.html', universe = editedUniverse)
 
 
-#Delete a restaurant
+#Delete a universe
 @app.route('/universe/<int:universe_id>/delete/', methods = ['GET','POST'])
 def deleteUniverse(universe_id):
   universeToDelete = session.query(Universe).filter_by(id = universe_id).one()
@@ -77,7 +77,7 @@ def deleteUniverse(universe_id):
   else:
     return render_template('deleteUniverse.html', universe = universeToDelete)
 
-#Show a restaurant menu
+#Show a universe menu
 @app.route('/universe/<int:universe_id>/')
 @app.route('/universe/<int:universe_id>/char/')
 def showChar(universe_id):
@@ -89,16 +89,16 @@ def showChar(universe_id):
 
 #Create a new menu item
 @app.route('/universe/<int:universe_id>/char/new/',methods=['GET','POST'])
-def newMenuItem(universe_id):
+def newuniChar(universe_id):
   universe = session.query(Universe).filter_by(id = universe_id).one()
   if request.method == 'POST':
-      newItem = UniChar(name = request.form['name'], description = request.form['description'], abilties = request.form['abilties'], foes = request.form['foes'], universe_id = universe_id)
+      newItem = UniChar(name = request.form['name'], description = request.form['description'], abilties = request.form['abilties'], alignments = request.form['alignments'], universe_id = universe_id)
       session.add(newChar)
       session.commit()
       flash('New Character %s Item Successfully Created' % (newChar.name))
       return redirect(url_for('showChar', universe_id = universe_id))
   else:
-      return render_template('newmenuitem.html', universe_id = universe_id)
+      return render_template('newuniChar.html', universe_id = universe_id)
 
 #Edit a menu item
 @app.route('/universe/<int:universe_id>/menu/<int:char_id>/edit', methods=['GET','POST'])
@@ -112,15 +112,15 @@ def editUniChar(universe_id, char_id):
         if request.form['description']:
             editedChar.description = request.form['description']
         if request.form['abilties']:
-            editedChar.price = request.form['abilties']
-        if request.form['foes']:
-            editedChar.course = request.form['foes']
+            editedChar.abilities = request.form['abilties']
+        if request.form['alignments']:
+            editedChar.alignments = request.form['alignments']
         session.add(editedItem)
         session.commit()
         flash('Universe Character Successfully Edited')
         return redirect(url_for('showMenu', universe_id = universe_id))
     else:
-        return render_template('editmenuitem.html', universe_id = universe_id, char_id = char_id, char = editedChar)
+        return render_template('edituniChar.html', universe_id = universe_id, char_id = char_id, char = editedChar)
 
 
 #Delete a menu item

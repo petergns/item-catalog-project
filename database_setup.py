@@ -26,8 +26,8 @@ class UniChar(Base):
     name =Column(String(80), nullable = False)
     id = Column(Integer, primary_key = True)
     description = Column(String(250))
-    price = Column(String(8))
-    course = Column(String(250))
+    abilities = Column(String(8))
+    alignments = Column(String(250))
     universe_id = Column(Integer,ForeignKey('universe.id'))
     universe = relationship(Universe)
 
@@ -40,7 +40,7 @@ class UniChar(Base):
            'description'         : self.description,
            'id'         : self.id,
            'abilities'         : self.abilities,
-           'foes'         : self.foes,
+           'alignments'         : self.alignments,
        }
 
 

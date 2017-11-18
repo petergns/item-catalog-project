@@ -19,35 +19,35 @@
 					<label for="description">Description:</label>
 					<textarea class="form-control" maxlength="250" rows="3" name="description">{{item.description}}</textarea>
 
-					<label for="price">Price:</label>
+					<label for="abilities">abilities:</label>
 					<div class="input-group">
 						<div class="input-group-addon">$</div>
-						<input type ="text" maxlength="10" class="form-control" name="price" value="{{item.price}}">
+						<input type ="text" maxlength="10" class="form-control" name="abilities" value="{{item.abilities}}">
 					</div>
-					<label for="course">Course:</label>
+					<label for="alignments">alignments:</label>
 					<div class="radio">
 					  <label>
-					    <input type="radio" name="course" id="course1" value="Appetizer" {% if item.course == 'Appetizer'%}checked{%endif%}>Appetizer
+					    <input type="radio" name="alignments" id="alignments1" value="Good" {% if item.alignments == 'Good'%}checked{%endif%}>Good
 					  </label>
 					</div>
 					<div class="radio">
 					  <label>
-					    <input type="radio" name="course" id="course2" value="Entree" {% if item.course == 'Entree' %}checked{%endif%}>Entree
+					    <input type="radio" name="alignments" id="alignments2" value="Neutral" {% if item.alignments == 'Neutral' %}checked{%endif%}>Neutral
 					  </label>
 					</div>
 					<div class="radio">
 					  <label>
-					    <input type="radio" name="course" id="course3" value="Dessert" {% if item.course == 'Dessert'%}checked{%endif%}>Dessert
+					    <input type="radio" name="alignments" id="alignments3" value="Fluid" {% if item.alignments == 'Fluid'%}checked{%endif%}>Fluid
 					  </label>
 					</div>
 					<div class="radio">
 					  <label>
-					    <input type="radio" name="course" id="course4" value="Beverage" {%if item.course =='Beverage'%}checked{%endif%}>Beverage
+					    <input type="radio" name="alignments" id="alignments4" value="Evil" {%if item.alignments =='Evil'%}checked{%endif%}>Evil
 					  </label>
 					</div>
 					<button type="submit" class="btn btn-default" id="submit" type="submit">
 					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Save</button>
-					<a href = '{{url_for('showRestaurants')}}'>
+					<a href = '{{url_for('showUniverses')}}'>
 						<button class="btn btn-default delete">
 						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel</button>
 					</a>

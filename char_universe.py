@@ -27,17 +27,17 @@ session.add(universe1)
 session.commit()
 
 
-uniChar1 = UniChar(name = "Batman", description = "Test  0", abilities = "A", foes= "Appetizer", universe = universe1)
+uniChar1 = UniChar(name = "Batman", description = "Test  0", abilities = "A", alignments= "Good", universe = universe1)
 
 session.add(uniChar1)
 session.commit()
 
-uniChar2 = UniChar(name = "Superman", description = "Test 1", abilities = "B", foes = "Entree", universe = universe1)
+uniChar2 = UniChar(name = "Superman", description = "Test 1", abilities = "B", alignments = "Neutral", universe = universe1)
 
 session.add(uniChar2)
 session.commit()
 
-uniChar3 = UniChar(name = "Wonder Woman", description = "Test 2", abilities = "C", foes = "Dessert", universe = universe1)
+uniChar3 = UniChar(name = "Wonder Woman", description = "Test 2", abilities = "C", alignments = "Fluid", universe = universe1)
 
 session.add(uniChar3)
 session.commit()
@@ -50,20 +50,20 @@ session.add(universe2)
 session.commit()
 
 
-uniChar1 = UniChar(name = "Iron Man", description = "Test 3", abilities = "D", foes = "Appetizer", universe = universe2)
+uniChar1 = UniChar(name = "Iron Man", description = "Test 3", abilities = "D", alignments = "Good", universe = universe2)
 
 session.add(uniChar1)
 session.commit()
 
-uniChar2 = UniChar(name = "Spiderman", description = "Test 4", abilities = "E", foes = "Entree", universe = universe2)
+uniChar2 = UniChar(name = "Spiderman", description = "Test 4", abilities = "E", alignments = "Neutral", universe = universe2)
 
 session.add(uniChar2)
 session.commit()
 
-uniChar3 = UniChar(name = "Star-Lord", description = "Star-Lord aka Peter Jason Quill", abilities = "F", foes = "Dessert", universe = universe2)
+uniChar3 = UniChar(name = "Star-Lord", description = "Star-Lord aka Peter Jason Quill", abilities = "F", alignments = "Fluid", universe = universe2)
 
 session.add(uniChar3)
 session.commit()
 
 
-print "added menu items!"
+print "added universe characters!"
