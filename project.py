@@ -3,29 +3,29 @@ app = Flask(__name__)
 
 from sqlalchemy import create_engine, asc
 from sqlalchemy.orm import sessionmaker
-from database_setup import Base, Universe, uniChar
+from database_setup import Base, Universe, CatChar
 
 
 #Connect to Database and create database session
-engine = create_engine('sqlite:///char_universe.db')
+engine = create_engine('sqlite:///universecat.db')
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 
-#JSON APIs to view universe Information
-@app.route('/universe/<int:universe_id>/char/JSON')
-def universeMenuJSON(universe_id):
+#JSON APIs to view Restaurant Information
+@app.route('/universe/<int:universe_id>/cat/JSON')
+def universeCatJSON(universe_id):
     universe = session.query(Universe).filter_by(id = universe_id).one()
-    chars = session.query(uniChar).filter_by(universe_id = universe_id).all()
-    return jsonify(UniChars=[i.serialize for i in chars])
+    chars = session.query(CatChar).filter_by(universe_id = universe_id).all()
+    return jsonify(CatChars=[i.serialize for i in chars])
 
 
-@app.route('/universe/<int:universe_id>/char/<int:char_id>/JSON')
-def uniCharJSON(universe_id, char_id):
-    Menu_Item = session.query((UniChar).filter_by(id = char_id).one()
-    return jsonify(Uni_Char = (Uni_Char.serialize)
+@app.route('/universe/<int:universe_id>/cat/<int:cat_id>/JSON')
+def catCharJSON(universe_id, cat_id):
+    Cat_Char = session.query(CatChar).filter_by(id = cat_id).one()
+    return jsonify(Cat_Char = Cat_Char.serialize)
 
 @app.route('/universe/JSON')
 def universesJSON():
@@ -33,14 +33,14 @@ def universesJSON():
     return jsonify(universes= [r.serialize for r in universes])
 
 
-#Show all universes
+#Show all restaurants
 @app.route('/')
-@app.route('/universe/')
+@app.route('/universes/')
 def showUniverses():
   universes = session.query(Universe).order_by(asc(Universe.name))
   return render_template('universes.html', universes = universes)
 
-#Create a new universe
+#Create a new restaurant
 @app.route('/universe/new/', methods=['GET','POST'])
 def newUniverse():
   if request.method == 'POST':
@@ -52,7 +52,7 @@ def newUniverse():
   else:
       return render_template('newUniverse.html')
 
-#Edit a universe
+#Edit a restaurant
 @app.route('/universe/<int:universe_id>/edit/', methods = ['GET', 'POST'])
 def editUniverse(universe_id):
   editedUniverse = session.query(Universe).filter_by(id = universe_id).one()
@@ -65,7 +65,7 @@ def editUniverse(universe_id):
     return render_template('editUniverse.html', universe = editedUniverse)
 
 
-#Delete a universe
+#Delete a restaurant
 @app.route('/universe/<int:universe_id>/delete/', methods = ['GET','POST'])
 def deleteUniverse(universe_id):
   universeToDelete = session.query(Universe).filter_by(id = universe_id).one()
@@ -75,66 +75,66 @@ def deleteUniverse(universe_id):
     session.commit()
     return redirect(url_for('showUniverses', universe_id = universe_id))
   else:
-    return render_template('deleteUniverse.html', universe = universeToDelete)
+    return render_template('deleteUniverse.html',universe = universeToDelete)
 
-#Show a universe menu
+#Show a restaurant menu
 @app.route('/universe/<int:universe_id>/')
-@app.route('/universe/<int:universe_id>/char/')
-def showChar(universe_id):
+@app.route('/universe/<int:universe_id>/cat/')
+def showCat(universe_id):
     universe = session.query(Universe).filter_by(id = universe_id).one()
-    chars = session.query(UniChar).filter_by(universe_id = universe_id).all()
-    return render_template('char.html', chars = chars, universe = universe)
+    chars = session.query(CatChar).filter_by(universe_id = universe_id).all()
+    return render_template('cat.html', chars = chars, universe = universe)
 
 
 
 #Create a new menu item
-@app.route('/universe/<int:universe_id>/char/new/',methods=['GET','POST'])
-def newuniChar(universe_id):
+@app.route('/universe/<int:universe_id>/cat/new/',methods=['GET','POST'])
+def newCatChar(universe_id):
   universe = session.query(Universe).filter_by(id = universe_id).one()
   if request.method == 'POST':
-      newItem = UniChar(name = request.form['name'], description = request.form['description'], abilties = request.form['abilties'], alignments = request.form['alignments'], universe_id = universe_id)
+      newChar = CatChar(name = request.form['name'], description = request.form['description'], abilities = request.form['abilities'], alignment = request.form['alignment'], universe_id = universe_id)
       session.add(newChar)
       session.commit()
-      flash('New Character %s Item Successfully Created' % (newChar.name))
-      return redirect(url_for('showChar', universe_id = universe_id))
+      flash('New Category %s Character Successfully Created' % (newChar.name))
+      return redirect(url_for('showCat', universe_id = universe_id))
   else:
-      return render_template('newuniChar.html', universe_id = universe_id)
+      return render_template('newcatchar.html', universe_id = universe_id)
 
 #Edit a menu item
-@app.route('/universe/<int:universe_id>/menu/<int:char_id>/edit', methods=['GET','POST'])
-def editUniChar(universe_id, char_id):
+@app.route('/universe/<int:universe_id>/cat/<int:cat_id>/edit', methods=['GET','POST'])
+def editCatChar(universe_id, cat_id):
 
-    editedChar = session.query(UniChar).filter_by(id = char_id).one()
+    editedChar = session.query(CatChar).filter_by(id = cat_id).one()
     universe = session.query(Universe).filter_by(id = universe_id).one()
     if request.method == 'POST':
         if request.form['name']:
             editedChar.name = request.form['name']
         if request.form['description']:
             editedChar.description = request.form['description']
-        if request.form['abilties']:
-            editedChar.abilities = request.form['abilties']
-        if request.form['alignments']:
-            editedChar.alignments = request.form['alignments']
-        session.add(editedItem)
+        if request.form['abilities']:
+            editedChar.abilities = request.form['abilities']
+        if request.form['alignment']:
+            editedChar.alignment = request.form['alignment']
+        session.add(editedChar)
         session.commit()
-        flash('Universe Character Successfully Edited')
-        return redirect(url_for('showMenu', universe_id = universe_id))
+        flash('Category Character Successfully Edited')
+        return redirect(url_for('showCat', universe_id = universe_id))
     else:
-        return render_template('edituniChar.html', universe_id = universe_id, char_id = char_id, char = editedChar)
+        return render_template('editcatchar.html', universe_id = universe_id, cat_id = cat_id, char = editedChar)
 
 
-#Delete a menu item
-@app.route('/universe/<int:universe_id>/char/<int:char_id>/delete', methods = ['GET','POST'])
-def deleteUniChar(universe_id,char_id):
+#Delete a category character
+@app.route('/universe/<int:universe_id>/cat/<int:cat_id>/delete', methods = ['GET','POST'])
+def deleteCatChar(universe_id,cat_id):
     universe = session.query(Universe).filter_by(id = universe_id).one()
-    charToDelete = session.query(UniChar).filter_by(id = char_id).one()
+    charToDelete = session.query(CatChar).filter_by(id = cat_id).one()
     if request.method == 'POST':
         session.delete(charToDelete)
         session.commit()
-        flash('Universe Character Successfully Deleted')
-        return redirect(url_for('showChar', universe_id = universe_id))
+        flash('Category Character Successfully Deleted')
+        return redirect(url_for('showCat', universe_id = universe_id))
     else:
-        return render_template('deleteUniChar.html', char = charToDelete)
+        return render_template('deleteCatChar.html', char = charToDelete)
 
 
 

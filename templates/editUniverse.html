@@ -11,7 +11,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-6 col-md-offset-1 padding-top">
-			<form action="{{ url_for('edituniverse',universe_id = universe.id)}}" method = "post">
+			<form action="{{ url_for('editUniverse',universe_id = universe.id)}}" method = "post">
 				<div class="form-group">
 					<label for="name">Name:</label>
 					<input type ="text" class="form-control" name="name" value="{{universe.name }}">

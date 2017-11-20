@@ -19,15 +19,15 @@ class Universe(Base):
            'id'           : self.id,
        }
 
-class UniChar(Base):
-    __tablename__ = 'uni_char'
+class CatChar(Base):
+    __tablename__ = 'cat_char'
 
 
     name =Column(String(80), nullable = False)
     id = Column(Integer, primary_key = True)
     description = Column(String(250))
     abilities = Column(String(8))
-    alignments = Column(String(250))
+    alignment = Column(String(250))
     universe_id = Column(Integer,ForeignKey('universe.id'))
     universe = relationship(Universe)
 
@@ -40,12 +40,12 @@ class UniChar(Base):
            'description'         : self.description,
            'id'         : self.id,
            'abilities'         : self.abilities,
-           'alignments'         : self.alignments,
+           'alignment'         : self.alignment,
        }
 
 
 
-engine = create_engine('sqlite:///char_universe.db')
+engine = create_engine('sqlite:///universecat.db')
 
 
 Base.metadata.create_all(engine)

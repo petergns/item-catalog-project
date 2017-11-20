@@ -124,13 +124,13 @@ u }
  	background-color: #e1e17f;
  	padding: 20px;
 }
-.menu-item {
+.cat-char {
 	background: #F0F0F0;
 	padding: 20px;
 	margin: 20px;
 	margin-left: -20px;
 }
-.menu-abilities {
+.cat-abilities {
 	font-weight: 700;
 }
 .creator {

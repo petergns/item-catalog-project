@@ -6,7 +6,7 @@
 	</div>
 	<div class="row banner menu">
 		<div class="col-md-11 col-md-offset-1 padding-none">
-			<h1>Edit Menu Item</h1>
+			<h1>Edit Cat Char</h1>
 		</div>
 	</div>
 	<div class="row">
@@ -14,35 +14,35 @@
 			<form action="#" method = "post">
 				<div class="form-group">
 					<label for="name">Name:</label>
-					<input type ="text" maxlength="100" class="form-control" name="name" value="{{item.name }}">
+					<input type ="text" maxlength="100" class="form-control" name="name" value="{{char.name }}">
 
 					<label for="description">Description:</label>
-					<textarea class="form-control" maxlength="250" rows="3" name="description">{{item.description}}</textarea>
+					<textarea class="form-control" maxlength="250" rows="3" name="description">{{char.description}}</textarea>
 
-					<label for="abilities">abilities:</label>
+					<label for="abilities">abilities</label>
 					<div class="input-group">
 						<div class="input-group-addon">$</div>
-						<input type ="text" maxlength="10" class="form-control" name="abilities" value="{{item.abilities}}">
+						<input type ="text" maxlength="10" class="form-control" name="abilities" value="{{char.abilities}}">
 					</div>
-					<label for="alignments">alignments:</label>
+					<label for="alignment">Alignment:</label>
 					<div class="radio">
 					  <label>
-					    <input type="radio" name="alignments" id="alignments1" value="Good" {% if item.alignments == 'Good'%}checked{%endif%}>Good
+					    <input type="radio" name="alignment" id="alignment1" value="Good" {% if char.alignment == 'Good'%}checked{%endif%}>Good
 					  </label>
 					</div>
 					<div class="radio">
 					  <label>
-					    <input type="radio" name="alignments" id="alignments2" value="Neutral" {% if item.alignments == 'Neutral' %}checked{%endif%}>Neutral
+					    <input type="radio" name="alignment" id="alignment2" value="Neutral" {% if char.alignment == 'Neutral' %}checked{%endif%}>Neutral
 					  </label>
 					</div>
 					<div class="radio">
 					  <label>
-					    <input type="radio" name="alignments" id="alignments3" value="Fluid" {% if item.alignments == 'Fluid'%}checked{%endif%}>Fluid
+					    <input type="radio" name="alignment" id="alignment3" value="Fluid" {% if char.alignment == 'Fluid'%}checked{%endif%}>Fluid
 					  </label>
 					</div>
 					<div class="radio">
 					  <label>
-					    <input type="radio" name="alignments" id="alignments4" value="Evil" {%if item.alignments =='Evil'%}checked{%endif%}>Evil
+					    <input type="radio" name="alignment" id="alignment4" value="Evil" {%if char.alignment =='Evil'%}checked{%endif%}>Evil
 					  </label>
 					</div>
 					<button type="submit" class="btn btn-default" id="submit" type="submit">
