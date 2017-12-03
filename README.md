@@ -1,60 +1,86 @@
-# OAuth2.0
-Starter Code for Auth&amp;Auth course
-# Installing the Vagrant VM for ud330 - Authentication & Authorization
+# Item-Catalog-Project
+Project files for the Item Catalog Project in the Udacity Full Stack Nanodegree.
 
-**Note: If you already have a vagrant machine installed from previous Udacity courses skip to the 'Fetch the Source Code and VM Configuration' section**
+This project contains a database of comic book universe characters.
 
-In Lessons 2,3 and 4 of this course, you'll use a virtual machine (VM) to run a web server and a web app that uses it. The VM is a Linux system that runs on top of your own machine.  You can share files easily between your computer and the VM.
+## Set Up Instructions
+Follow these instructions to set up the Vagrant Linux Environment and the Item Catalog Project
 
-We're using the Vagrant software to configure and manage the VM. Here are the tools you'll need to install to get it running:
+### Prerequisite Resources
+You will need the following Python resources for it to run:
+<ul>
+  <li>Python 2.7 or above (https://www.python.org/downloads/).
+  <li>Git (https://git-scm.com/downloads).
+  <li>Vagrant (https://www.vagrantup.com/).
+  <li>VirtualBox (https://www.virtualbox.org/wiki/Downloads).
+  <li>Sqlalchemy (https://www.sqlalchemy.org/download.html).
+</ul>
 
-### Git
+You will need the following other resources for it to run:
+<ul>
+  <li>Flask (http://flask.pocoo.org/).
+  <li>Httplib2 (https://pypi.python.org/pypi/httplib2/0.10.3).
+  <li>Oauth2client (https://pypi.python.org/pypi/oauth2client/).
+  <li>Web browser i.e. Chrome (https://www.google.com/chrome/)
+</ul>
 
-If you don't already have Git installed, [download Git from git-scm.com.](http://git-scm.com/downloads) Install the version for your operating system.
+### Installation
 
-On Windows, Git will provide you with a Unix-style terminal and shell (Git Bash).  
-(On Mac or Linux systems you can use the regular terminal program.)
+<ul>
+  <li>Install Git (https://git-scm.com/downloads) on the local machine
+  <li>Install Python 2.7 or above (https://www.python.org/downloads/) on the local machine
+  <li>Install VirtualBox (https://www.virtualbox.org/wiki/Downloads) on the local machine
+  <li>Install Vagrant (https://www.vagrantup.com/) on the local machine
+</ul>
 
-You will need Git to install the configuration for the VM. If you'd like to learn more about Git, [take a look at our course about Git and Github](http://www.udacity.com/course/ud775).
+### Preparing the Virtual Machine
+<ol>
+  <li>Use git clone https://github.com/petergns/item-catalog-project.git to clone this repository.
+  <li>Navigate to the cloned repository using Git i.e. cd desktop/local-machine/vagrant
+  <li>Run the command 'vagrant up' to download and install the linux operating system
+  <li>Run the command 'vagrant ssh' to log in to the virtual machine
+  <li>Install Sqlalchemy, Httplib2 and Oauth2client with sudo apt-get install, if they are not installed already.
+ </ol>
 
-### VirtualBox
+### Setup the Database
+After the initial setup you can load the project files while connected to vagrant.
 
-VirtualBox is the software that actually runs the VM. [You can download it from virtualbox.org, here.](https://www.virtualbox.org/wiki/Downloads)  Install the *platform package* for your operating system.  You do not need the extension pack or the SDK. You do not need to launch VirtualBox after installing it.
+Navigate to cd item-catalog-project:
+<ol>
+  <li>Run python database_setup.py.
+  <li>Run your web browser.
+</ol>
 
-**Ubuntu 14.04 Note:** If you are running Ubuntu 14.04, install VirtualBox using the Ubuntu Software Center, not the virtualbox.org web site. Due to a [reported bug](http://ubuntuforums.org/showthread.php?t=2227131), installing VirtualBox from the site may uninstall other software you need.
+### Contents of the Project
+It uses python to establish a simple item-catalog database with an ability to add and edit new items.
 
-### Vagrant
+The Item Catalog allows:
+<ul>
+  <li>Facebook or Google online login to edit add or delete content.
+  <li>Comic book characters to be added from comic book universes.
+  <li>New comic book universes to be added for characters.
+</ul>
 
-Vagrant is the software that configures the VM and lets you share files between your host computer and the VM's filesystem.  [You can download it from vagrantup.com.](https://www.vagrantup.com/downloads) Install the version for your operating system.
+### Preparing the Project
+In order to run the project you must have:
+1. Run database_setup.py with the python database_setup.py command.
+2. Checked universe_characters.py in a editor (some of which are featured below), if you would like to add more characters locally.
+3. Run python universe_characters.py with the python universe_characters.py command.
+4. Prepared your web browser to navigate to http://localhost:5000
 
-**Windows Note:** The Installer may ask you to grant network permissions to Vagrant or make a firewall exception. Be sure to allow this.
+### Run the Project
+1. Run the command python project.py in order to start the item-catalog.
+2. Navigate to http://localhost:5000 on your web browser for access.
 
-## Fetch the Source Code and VM Configuration
+### Useful Editors:
+Atom (https://atom.io/)
+Notepad++ (https://notepad-plus-plus.org/)
+Sublime Text (https://www.sublimetext.com/)
 
-**Windows:** Use the Git Bash program (installed with Git) to get a Unix-style terminal.  
-**Other systems:** Use your favorite terminal program.
+![Image of Output](https://github.com/petergns/logs-analysis/blob/master/comic-universe-catalog.PNG)
 
-From the terminal, run:
+## Author
+[petergns](https://github.com/petergns)
 
-    git clone https://github.com/udacity/OAuth2.0 oauth
-
-This will give you a directory named **oauth** complete with the source code for the flask application, a vagrantfile, and a bootstrap.sh file for installing all of the necessary tools. 
-
-## Run the virtual machine!
-
-Using the terminal, change directory to oauth (**cd oauth**), then type **vagrant up** to launch your virtual machine.
-
-
-## Running the Restaurant Menu App
-Once it is up and running, type **vagrant ssh**. This will log your terminal into the virtual machine, and you'll get a Linux shell prompt. When you want to log out, type **exit** at the shell prompt.  To turn the virtual machine off (without deleting anything), type **vagrant halt**. If you do this, you'll need to run **vagrant up** again before you can log into it.
-
-
-Now that you have Vagrant up and running type **vagrant ssh** to log into your VM.  change to the /vagrant directory by typing **cd /vagrant**. This will take you to the shared folder between your virtual machine and host machine.
-
-Type **ls** to ensure that you are inside the directory that contains project.py, database_setup.py, and two directories named 'templates' and 'static'
-
-Now type **python database_setup.py** to initialize the database.
-
-Type **python lotsofmenus.py** to populate the database with restaurants and menu items. (Optional)
-
-Type **python project.py** to run the Flask web server. In your browser visit **http://localhost:5000** to view the restaurant menu app.  You should be able to view, add, edit, and delete menu items and restaurants.
+## Acknowledgments
+Acknowledgments to [Udacity](https://www.udacity.com/) for the resources that helped me develop this.
