@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="row">
+	<div class="categories col-sm-4">
+		<div class="page-header">
+			<h3 class="list-header-main">
+					<span>Categories</span>
+					<span class="bar-space-main"></span>
+				</h3>
+			<ul class="list-chars">
+				{% for category in categories %}
+				<a href="{{url_for('showCategory', catalog_id = category.id )}}">
+					<li class="title-chars">
+						<span class="name-char">{{category.name}}</span>
+					</li>
+				</a>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+
+	<div class="category-chars col-sm-7">
+		<div class="cat-chars-list">
+			<h5 class="list-header-main">
+					<span>{{categoryName}} ({{catCharsCount}} characters)</span>
+					<span class="bar-space-main"></span>
+				</h5>
+			<ul class="list-chars">
+				{% for catChar in catChars %}
+				<a href="{{url_for('showCatChar', catalog_id = catChar.category_id ,char_id = catChar.id )}}">
+					<li class="title-chars">
+						<span class="name-char">{{catChar.name}}</span>
+					</li>
+				</a>
+				{% endfor %}
+
+							{% if 'username' in session %}
+							<a class="btn btn-primary btn-space" href="{{url_for('addCatChar')}}" role="button">Add Character/s</a> {% endif %}
+			</ul>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="row">
+	<div class="categories col-sm-5">
+			<h3 class="list-header-main">
+					<span>Categories</span>
+					<span class="bar-space-main"></span>
+				</h3>
+			<ul class="list-text-main">
+				{% for category in categories %}
+				<a href="{{url_for('showCategory', catalog_id = category.id )}}">
+					<li class="title-chars">
+						<span class="name-char">{{category.name}}</span>
+					</li>
+				</a>
+				{% endfor %}
+			</ul>
+		</div>
+
+	<div class="latest col-sm-6">
+		<div class="list-recent">
+			<h3 class="list-header-main">
+					<span>Recently Added</span>
+					<span class="bar-space-main"></span>
+				</h3>
+			<ul class="list-text-main">
+				{% for catChar in catChars %}
+				<a href="{{url_for('showCatChar', catalog_id = catChar.category_id ,char_id = catChar.id )}}">
+					<li class="title-chars">
+						<span class="name-char">{{catChar.name}}</span>
+						<span class="type-char">({{catChar.category.name}})</span>
+					</li>
+				</a>
+				{% endfor %} {% if 'username' in session %}
+				<a class="btn btn-primary btn-space" href="{{url_for('addCatChar')}}" role="button">Add Character/s</a> {% endif %}
+			</ul>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

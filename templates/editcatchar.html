@@ -1,58 +1,31 @@
-{% extends "main.html" %}
-{% block content %}
-{% include "header.html" %}
-	<div class="row divider green">
-		<div class="col-md-12"></div>
-	</div>
-	<div class="row banner menu">
-		<div class="col-md-11 col-md-offset-1 padding-none">
-			<h1>Edit Cat Char</h1>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-6 col-md-offset-1 padding-top">
-			<form action="#" method = "post">
-				<div class="form-group">
-					<label for="name">Name:</label>
-					<input type ="text" maxlength="100" class="form-control" name="name" value="{{char.name }}">
+{% extends "base.html" %} {% block content %}
 
-					<label for="description">Description:</label>
-					<textarea class="form-control" maxlength="250" rows="3" name="description">{{char.description}}</textarea>
-
-					<label for="abilities">abilities</label>
-					<div class="input-group">
-						<div class="input-group-addon">$</div>
-						<input type ="text" maxlength="10" class="form-control" name="abilities" value="{{char.abilities}}">
-					</div>
-					<label for="alignment">Alignment:</label>
-					<div class="radio">
-					  <label>
-					    <input type="radio" name="alignment" id="alignment1" value="Good" {% if char.alignment == 'Good'%}checked{%endif%}>Good
-					  </label>
-					</div>
-					<div class="radio">
-					  <label>
-					    <input type="radio" name="alignment" id="alignment2" value="Neutral" {% if char.alignment == 'Neutral' %}checked{%endif%}>Neutral
-					  </label>
-					</div>
-					<div class="radio">
-					  <label>
-					    <input type="radio" name="alignment" id="alignment3" value="Fluid" {% if char.alignment == 'Fluid'%}checked{%endif%}>Fluid
-					  </label>
-					</div>
-					<div class="radio">
-					  <label>
-					    <input type="radio" name="alignment" id="alignment4" value="Evil" {%if char.alignment =='Evil'%}checked{%endif%}>Evil
-					  </label>
-					</div>
-					<button type="submit" class="btn btn-default" id="submit" type="submit">
-					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Save</button>
-					<a href = '{{url_for('showUniverses')}}'>
-						<button class="btn btn-default delete">
-						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel</button>
-					</a>
-				</div>
-			</form>
-		</div>
+<div class="row">
+	<div class="category-char col-sm-7">
+		<h3 class="page-header">
+				<span>Edit Character</span>
+			</h3>
+		<form action="#" method="post" class="category-char__form">
+			<fieldset>
+				<label for="char-name">Name</label>
+				<input type="text" name="name" value="{{catChar.name}}" id="char-name" class="form-control">
+				<label for="char-description">Description:</label>
+				<textarea name="description" id="char-description" rows="3" class="form-control">{{catChar.description}}</textarea>
+				<label for="char-category">Category</label>
+				<select class="form-control" name="category" id="char-category">
+						{% for category in categories %}
+							{% if catChar.category_id == category.id %}
+								<option selected value="{{category.id}}">{{category.name}}</option>
+							{% else %}
+								<option value="{{category.id}}">{{category.name}}</option>
+							{% endif %}
+						{% endfor %}
+					</select>
+			</fieldset>
+			<a href="{{url_for('showCatChar', catalog_id = catChar.category_id ,char_id = catChar.id )}}" class="btn btn-primary btn-space">Back</a>
+			<input class="btn btn-primary btn-space" type="submit" value="Save" role="button">
+		</form>
 	</div>
+</div>
+
 {% endblock %}

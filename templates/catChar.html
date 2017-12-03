@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="row">
+	<div class="category-char col-12">
+		<h5 class="page-header">
+				<span>{{catChar.name}}</span>
+				<span class="bar-space"></span>
+			</h5>
+		<div class="char-description">
+			{{catChar.description}}
+		</div>
+		<div class="cat-char-action">
+			<a href="{{url_for('showCategory', catalog_id = catChar.category_id)}}" class="btn btn-primary btn-space">Back</a> {% if 'username' in session and creator.id == session['user_id'] %}
+			<a href="{{url_for('editCatChar', catalog_id = catChar.category_id, char_id = catChar.id)}}" class="btn btn-primary btn-space">Edit</a>
+			<a href="{{url_for('deleteCatChar', catalog_id = catChar.category_id, char_id = catChar.id)}}" class="btn btn-primary btn-space">Delete</a> {% endif %}
+		</div>
+	</div>
+</div>
+
+{% endblock %}

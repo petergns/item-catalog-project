@@ -1,0 +1,159 @@
+/* Lists */
+
+ul {
+  list-style-type: none;
+}
+
+.list-header-main {
+  padding-left: 38px;
+  color: #177569;
+}
+
+.list-text-main {}
+
+.test-a {
+  text-align: right;
+}
+
+.list-chars {
+  text-align: left
+}
+
+.list-recent .list__add {
+  font-size: .8rem;
+  height: 2.8rem;
+  line-height: 2.8rem;
+  padding: 0 1.5rem;
+}
+
+/* Links */
+
+a:hover {
+  color: blue;
+  text-decoration: none;
+}
+
+/* Login Styles */
+
+.login-space {
+  font-weight: 700;
+  margin: 10px 0;
+}
+
+.container--login {
+  text-align: center;
+}
+
+.login__button {}
+
+.login__button--facebook {
+  background: #3B5997;
+  border-color: #3B5997;
+}
+
+.login__button--google {
+  margin-top: 1rem;
+  background: #da4635;
+  border-color: #da4635;
+}
+
+/* Buttons */
+
+.btn-space {
+  margin-top: 15px;
+}
+
+.button-link {
+  color: white;
+  text-decoration: none;
+}
+
+/* Flash Message */
+
+.flash__message {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: .03rem;
+  text-transform: uppercase;
+  color: #177569;
+}
+
+/* Main Text Headers */
+
+.page-header {}
+
+.bar-space-main {
+  height: .1rem;
+  display: block;
+  width: 5rem;
+}
+
+.bar-space {
+  height: .1rem;
+  display: block;
+  width: 5rem;
+}
+
+/* Base Main Template */
+
+.wrapper .container {
+  max-width: 60rem;
+}
+
+.content .container {
+  background: #f4f5f6;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  border-bottom: .1rem solid #d1d1d1;
+}
+
+.title-chars .name-char {
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+.title-chars .type-char {
+  color: black;
+  text-transform: capitalize;
+  font-style: italic;
+}
+
+.char-description {}
+
+.cat-chars-list {}
+
+.cat-char-action .act-edit, .cat-char-action .act-delete, .cat-char-action .act-back {
+  display: inline;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+  margin-right: .2rem;
+}
+
+.category-char__form .form__label {
+  display: inline;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+}
+
+.category-char__form .form__textarea {
+  min-height: 30rem;
+}
+
+@media (min-width: 40.0rem) {
+  .content .container {
+    margin-top: 7rem;
+    border: .1rem solid #d1d1d1;
+  }
+}
+
+@media (min-width: 40.0rem) {
+  .categories {
+    border-right: .1rem solid #d1d1d1;
+    margin-right: 0rem;
+  }
+}
