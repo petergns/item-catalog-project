@@ -80,7 +80,11 @@ In order to run the project you must have:
   <li>Sublime Text (https://www.sublimetext.com/)
 </ul>
 
+### Catalog When Logged In
 ![Image of Output](https://github.com/petergns/logs-analysis/blob/master/comic-universe-catalog.PNG)
+
+### Adding a Comic Book Character Page
+![Image of Output](https://github.com/petergns/item-catalog-project/blob/master/add-new-character.PNG)
 
 ## Author
 [petergns](https://github.com/petergns)
