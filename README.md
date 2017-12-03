@@ -73,9 +73,11 @@ In order to run the project you must have:
 2. Navigate to http://localhost:5000 on your web browser for access.
 
 ### Useful Editors:
-Atom (https://atom.io/)
-Notepad++ (https://notepad-plus-plus.org/)
-Sublime Text (https://www.sublimetext.com/)
+<ul>
+  <li>Atom (https://atom.io/)
+  <li>Notepad++ (https://notepad-plus-plus.org/)
+  <li>Sublime Text (https://www.sublimetext.com/)
+</ul>
 
 ![Image of Output](https://github.com/petergns/logs-analysis/blob/master/comic-universe-catalog.PNG)
 
