@@ -39,6 +39,7 @@ You will need the following other resources for it to run:
   <li>Navigate to the cloned repository using Git i.e. cd desktop/local-machine/vagrant
   <li>Run the command 'vagrant up' to download and install the linux operating system
   <li>Run the command 'vagrant ssh' to log in to the virtual machine
+  <li>Install Flask (http://flask.pocoo.org/) with pip install Flask, if it is not installed already.
   <li>Install Sqlalchemy, Httplib2 and Oauth2client with sudo apt-get install, if they are not installed already.
  </ol>
 
