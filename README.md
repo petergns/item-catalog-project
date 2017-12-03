@@ -37,8 +37,8 @@ You will need the following other resources for it to run:
 <ol>
   <li>Use git clone https://github.com/petergns/item-catalog-project.git to clone this repository.
   <li>Navigate to the cloned repository using Git i.e. cd desktop/local-machine/vagrant
-  <li>Run the command 'vagrant up' to download and install the linux operating system
-  <li>Run the command 'vagrant ssh' to log in to the virtual machine
+  <li>Run the command 'vagrant up' to download and install the linux operating system.
+  <li>Run the command 'vagrant ssh' to log in to the virtual machine.
   <li>Install Flask (http://flask.pocoo.org/) with pip install Flask, if it is not installed already.
   <li>Install Sqlalchemy, Httplib2 and Oauth2client with sudo apt-get install, if they are not installed already.
  </ol>
@@ -48,7 +48,8 @@ After the initial setup you can load the project files while connected to vagran
 
 Navigate to cd item-catalog-project:
 <ol>
-  <li>Run python database_setup.py.
+  <li>Run python requirements.txt
+  <li>Run python database_setup.py
   <li>Run your web browser.
 </ol>
 
@@ -64,6 +65,7 @@ The Item Catalog allows:
 
 ### Preparing the Project
 In order to run the project you must have:
+1. Run requirements.txt with the python requirements.txt command.
 1. Run database_setup.py with the python database_setup.py command.
 2. Checked universe_characters.py in a editor (some of which are featured below), if you would like to add more characters locally.
 3. Run python universe_characters.py with the python universe_characters.py command.
