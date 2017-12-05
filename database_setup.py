@@ -30,7 +30,7 @@ class Category(Base):
         return {
             'id': self.id,
             'name': self.name,
-                }
+        }
 
 
 class CatChar(Base):
@@ -51,7 +51,8 @@ class CatChar(Base):
             'category': self.category.name,
             'description': self.description,
             'name': self.name,
-            }
+        }
+
 
 engine = create_engine('sqlite:///charcatalog.db')
 Base.metadata.create_all(engine)

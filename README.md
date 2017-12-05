@@ -1,4 +1,5 @@
-# Item-Catalog-Project
+Item-Catalog-Project
+====================
 Project files for the Item Catalog Project in the Udacity Full Stack Nanodegree.
 
 This project contains a database of comic book universe characters.
@@ -66,10 +67,10 @@ The Item Catalog allows:
 ### Preparing the Project
 In order to run the project you must have:
 1. Run requirements.txt with the python requirements.txt command.
-1. Run database_setup.py with the python database_setup.py command.
-2. Checked universe_characters.py in a editor (some of which are featured below), if you would like to add more characters locally.
-3. Run python universe_characters.py with the python universe_characters.py command.
-4. Prepared your web browser to navigate to http://localhost:5000
+2. Run database_setup.py with the python database_setup.py command.
+3. Checked universe_characters.py in a editor (some of which are featured below), if you would like to add more characters locally.
+4. Run python universe_characters.py with the python universe_characters.py command.
+5. Prepared your web browser to navigate to http://localhost:5000
 
 ### Run the Project
 1. Run the command python project.py in order to start the item-catalog.
@@ -90,6 +91,9 @@ In order to run the project you must have:
 
 ## Author
 [petergns](https://github.com/petergns)
+
+### Free Image Resource
+1. https://pixabay.com/en/x-men-hero-marvel-comic-book-2640250/
 
 ## Acknowledgments
 Acknowledgments to [Udacity](https://www.udacity.com/) for the resources that helped me develop this.

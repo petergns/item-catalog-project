@@ -33,6 +33,13 @@ a:hover {
   text-decoration: none;
 }
 
+/* Responsive Images */
+
+img-responsive {
+    max-width: 100%;
+    height: auto;
+}
+
 /* Login Styles */
 
 .login-space {
